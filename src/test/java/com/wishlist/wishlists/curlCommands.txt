@@ -1,0 +1,3 @@
+curl localhost:8080/items -H "Content-Type: application/json" -d '{"id":null, "itemName":"catfood", "itemNum": 4656}'
+
+curl localhost:8080/items
