@@ -14,7 +14,9 @@
 	<name>wishlists</name>
 	<description>Wishlist subscriptions</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -59,6 +61,15 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
+					<cloudSdkHome>/Users/syebokha/Downloads/google-cloud-sdk</cloudSdkHome>
 				</configuration>
 			</plugin>
 		</plugins>
