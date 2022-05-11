@@ -4,9 +4,12 @@ import com.wishlist.wishlists.domain.Item;
 import com.wishlist.wishlists.domain.User;
 import com.wishlist.wishlists.service.WishlistService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.Duration;
 
 @RestController
 public class WishlistController {
@@ -51,5 +54,11 @@ public class WishlistController {
     @GetMapping("/users/{id}/wishlist")
     public Flux<Item> getWishList(@PathVariable String id) {
         return wishlistService.getWishList(id).log();
+    }
+
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Long> stream() {
+        return Flux.interval(Duration.ofSeconds(1))
+                .log();
     }
 }
